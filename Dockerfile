@@ -49,7 +49,8 @@ RUN cd /opt/ \
 
 RUN apt update &&  apt install -y fcitx5 fcitx5-config-qt fcitx5-frontend-gtk4 fcitx5-pinyin && \
     apt install -y fonts-noto-cjk 
-  
+
+RUN wget https://f19fc6-1955528070.antpcdn.com:19001/b/pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/4.17.7/baidunetdisk_4.17.7_amd64.deb && dpkg -i baidunetdisk_4.17.7_amd64.deb && rm baidunetdisk_4.17.7_amd64.deb
 COPY pycharm.desktop ${HOME}/Desktop/  
 RUN sed -i '/STARTUP_COMPLETE=1/i\fcitx5 &' /dockerstartup/vnc_startup.sh
 # RUN custom_startup.sh /dockerstartup/vnc_startup.sh
